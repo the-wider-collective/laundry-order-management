@@ -1,3 +1,4 @@
+
 import React from "react";
 
 interface OrderHeaderProps {
@@ -15,10 +16,10 @@ export const OrderHeader: React.FC<OrderHeaderProps> = ({
 }) => {
   return (
     <div className="mb-[30px]">
-      <h1 className="font-black text-2xl mb-2.5">{orderStatus}</h1>
+      <h1 className="text-[#333333] text-2xl font-bold mb-2.5">{orderStatus}</h1>
       <div className="flex justify-between text-[#666] mb-[5px]">
         <div>Order ID: {orderId}</div>
-        <div>{orderPrice}</div>
+        <div className="font-semibold">{orderPrice}</div>
       </div>
       <div className="text-[#666]">{orderDate}</div>
     </div>
