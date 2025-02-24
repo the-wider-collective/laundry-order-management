@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { OrderHeader } from "@/components/orders/OrderHeader";
 import { OrderTabs } from "@/components/orders/OrderTabs";
 import { OrderTimeline } from "@/components/orders/OrderTimeline";
+import { PastOrdersList } from "@/components/orders/PastOrdersList";
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState<"current" | "past">("current");
@@ -23,21 +24,25 @@ const Index = () => {
         <OrderTabs activeTab={activeTab} onTabChange={setActiveTab} />
 
         <div className="px-5 py-0 max-sm:px-[15px] max-sm:py-0">
-          <OrderHeader
-            orderId="123456"
-            orderStatus="Order placed!"
-            orderDate="Sat, Feb 8"
-            orderPrice="$7.00"
-          />
-
-          <OrderTimeline />
-
-          <button
-            className="w-full text-center text-[#FFC107] cursor-pointer mt-10 p-5 font-semibold"
-            onClick={() => console.log("Cancel order")}
-          >
-            Cancel Order
-          </button>
+          {activeTab === "current" ? (
+            <>
+              <OrderHeader
+                orderId="123456"
+                orderStatus="Order placed!"
+                orderDate="Sat, Feb 8"
+                orderPrice="$7.00"
+              />
+              <OrderTimeline />
+              <button
+                className="w-full text-center text-[#FFC107] cursor-pointer mt-10 p-5 font-semibold"
+                onClick={() => console.log("Cancel order")}
+              >
+                Cancel Order
+              </button>
+            </>
+          ) : (
+            <PastOrdersList />
+          )}
         </div>
       </main>
     </div>
